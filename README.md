@@ -8,6 +8,15 @@ This project demonstrates the deployment of a Go HTTP server application using D
 - **docker-compose.yaml**: Defines the Docker Compose file that includes both the Go application and a MySQL database, allowing you to run the app locally.
 - **Helm-chart/**: Contains Helm manifests for deploying the app on Kubernetes, with added configuration for high availability and volume persistence.
 - **README.md**: This file.
+## Prerequisites:
+1- You can either use :
+- A Machine with (Docker , Docker compose, K8s cluster, Helm) installed
+- An online playground (I used KillerKoda for the helm section in this project)
+
+2- To clone this repo
+```bash
+git clone https://github.com/Ahmed-Shoushaa/GoLangApp-Docker-Helm-Jenkins-.git
+```
 ## Building the Go App using Dockerfile
 I created a Dockerfile to create a GoApp image and i cared about:
 - Using base image **golang:alpine** to make it lightweight
@@ -15,17 +24,16 @@ I created a Dockerfile to create a GoApp image and i cared about:
 
 To build the Go app and create a Docker image, follow these steps:
 
-1. Install Docker on your machine.
-2. cd to the Dockerfile location
+1. cd to the Dockerfile location in the **code-with-Dockerfile** directory
 
-3. Run the following command to build the Docker image locally:
+2. Run the following command to build the Docker image locally:
 
 ```bash
 docker build -t your-dockerhub-username/goapp .
 ```
    Replace your-dockerhub-username with your Docker Hub username.
 
-4. After a successful build, you can push the Docker image to Docker Hub:
+3. After a successful build, you can push the Docker image to Docker Hub:
 ```bash
 docker push your-dockerhub-username/goapp
 ```
@@ -34,19 +42,17 @@ docker push your-dockerhub-username/goapp
 ## Running the App Locally with Docker Compose
 To run the Go app and MySQL database locally, use Docker Compose:
 
-1. Install Docker Compose on your machine.
+1. Ensure that the Docker Compose file (docker-compose.yaml) is present in the project directory.
 
-2. Ensure that the Docker Compose file (docker-compose.yaml) is present in the project directory.
+2. Open a terminal or command prompt and navigate to the project directory.
 
-3. Open a terminal or command prompt and navigate to the project directory.
-
-4. Run the following command to start the containers:
+3. Run the following command to start the containers:
 ```bash
 docker-compose up
 ```
    The Go app and MySQL database will be deployed and running locally.
  
- You can access it using 
+ Access it using 
  ```bash
 curl localhost:9090
 ```
@@ -72,7 +78,6 @@ git clone https://github.com/Ahmed-Shoushaa/golang.git
 ```bash
 helm install try1 ./Helm-chart
 ```
-  replace ./Helm-chart with your helm chart directory
 
 5. After a successful deployment, you can access the Go app using the provided service URL within the KillerKoda Playground and you can see the objects successfully deployed
 
