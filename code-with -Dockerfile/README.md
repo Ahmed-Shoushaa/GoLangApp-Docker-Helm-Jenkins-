@@ -1,5 +1,3 @@
-# Wow Such Program
-
 This program is very simple, it connects to a MySQL database based on the following env vars:
 * MYSQL_HOST
 * MYSQL_USER
