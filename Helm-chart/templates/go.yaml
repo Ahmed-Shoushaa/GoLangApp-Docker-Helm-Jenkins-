@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name}}-goapp
+  labels:
+    run: goapp
+spec:
+  replicas: {{ .Values.goappReplicaCount}}
+  selector:
+    matchLabels:
+      run: goapp
+  template:
+    metadata:
+      labels:
+        run: goapp
+      name: goapp
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_USER
+          value: root
+        - name: MYSQL_HOST
+          value: {{ .Release.Name}}-mysql
+        - name: MYSQL_PASS
+          value: password
+        - name: MYSQL_PORT
+          value: "3306"
+        image: docker.io/shoushaa/goapp:latest
+        name: goapp
+        resources: {}
+        volumeMounts:
+        - mountPath: "/app/data"
+          name: app-volume
+      volumes:
+        - name: app-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name}}-app-pvc
