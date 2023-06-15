@@ -1,11 +1,22 @@
+version: '2'
+
 services:
   app:
     image: app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASS: password
+      MYSQL_PORT: "3306"
+    ports:
+      - 9090:9090
     depends_on:
-      - db
-  db:
+      - mysql
+    command: sh -c "sleep 10 && app"
+
+  mysql:
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: ahmed  
-      MYSQL_PASSWORD: adel
+    ports:
+      - 3306:3306
