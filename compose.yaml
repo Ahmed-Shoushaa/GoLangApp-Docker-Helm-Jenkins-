@@ -1,0 +1,11 @@
+services:
+  app:
+    image: app
+    depends_on:
+      - db
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: ahmed  
+      MYSQL_PASSWORD: adel
