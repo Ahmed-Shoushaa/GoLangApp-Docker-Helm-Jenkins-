@@ -1,5 +1,5 @@
 
-# GoServerApp with (Docker, Helm, and Jenkins)
+# GoLangApp with (Docker, Helm, and Jenkins)
 This project demonstrates the deployment of a Go HTTP server application using Docker, Jenkins, Docker Compose, and Kubernetes with Helm.
 
 ## Project Structure
